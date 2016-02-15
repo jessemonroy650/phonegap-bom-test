@@ -17,23 +17,20 @@ var app = {
         //
         screenStuff();
         navigatorStuff();
-        document.getElementById('isbrowser').innerHTML = isBrowser();
+        var v = isBrowser(navigator.appVersion, 'X11');
+        document.getElementById('isbrowser').innerHTML = v;
         jqueryStuff();
         phonegapStuff();
     }
-}
-
-
+};
 
 /*
-
     window.location.href returns the href (URL) of the current page
     window.location.hostname returns the domain name of the web host
     window.location.pathname returns the path and filename of the current page
     window.location.protocol returns the web protocol used (http:// or https://)
     window.location.assign loads a new document
 */
-
 function screenStuff() {
     var screenStuff = "" +
     "<p class=r />screen.width: "       + screen.width +
@@ -45,7 +42,7 @@ function screenStuff() {
 
     document.getElementById('screenStuff').innerHTML = screenStuff;
 }
-
+//
 function navigatorStuff() {
     var navigatorStuff = "" +
 	"<p class=a />navigator.appCodeName: "   + navigator.appCodeName +
@@ -59,8 +56,7 @@ function navigatorStuff() {
 
     document.getElementById('navigatorStuff').innerHTML = navigatorStuff;
 }
-
-
+//
 function jqueryStuff() {
     var jqueryStuff = "" +
 	"<p class=r />JQuery version is: "     +  $.fn.jquery +
@@ -72,7 +68,7 @@ function jqueryStuff() {
 
     document.getElementById('jqueryStuff').innerHTML = jqueryStuff;
 }
-
+//
 function phonegapStuff() {
     document.getElementById('cordova').innerHTML = device.cordova;
     document.getElementById('model').innerHTML = device.model;
@@ -80,11 +76,9 @@ function phonegapStuff() {
     document.getElementById('uuid').innerHTML = device.uuid;
     document.getElementById('version').innerHTML = device.version;
 }
-
-function isBrowser() {
-    var v = navigator.appVersion;
-    var rgx  = /X11/;
-    return v.match(rgx);
+//
+function isBrowser(obj, string) {
+    return obj.match(string);
 }
 
 // Wait for PhoneGap to load
@@ -94,7 +88,7 @@ function isBrowser() {
 document.addEventListener('DOMContentLoaded', function() {
     screenStuff();
     navigatorStuff();
-    var v = isBrowser();
+    var v = isBrowser(navigator.appVersion, 'X11');
     document.getElementById('isbrowser').innerHTML = v;
     jqueryStuff();
 });
