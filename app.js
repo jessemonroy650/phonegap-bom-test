@@ -17,6 +17,7 @@ var app = {
         //
         screenStuff();
         navigatorStuff();
+        document.getElementById('isbrowser').innerHTML = isBrowser();
         jqueryStuff();
         phonegapStuff();
     }
@@ -80,13 +81,21 @@ function phonegapStuff() {
     document.getElementById('version').innerHTML = device.version;
 }
 
+function isBrowser() {
+    var v = navigator.appVersion;
+    var rgx  = /X11/;
+    return v.match(rgx);
+}
+
 // Wait for PhoneGap to load
 //document.addEventListener("deviceready", app.onDeviceReady, false);
 
 //var device = {platform:'browser'}; app.onDeviceReady();
 document.addEventListener('DOMContentLoaded', function() {
-        screenStuff();
-        navigatorStuff();
-        jqueryStuff();
+    screenStuff();
+    navigatorStuff();
+    var v = isBrowser();
+    document.getElementById('isbrowser').innerHTML = v;
+    jqueryStuff();
 });
 
