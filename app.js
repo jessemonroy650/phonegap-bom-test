@@ -81,7 +81,12 @@ function phonegapStuff() {
 }
 
 // Wait for PhoneGap to load
-document.addEventListener("deviceready", app.onDeviceReady, false);
+//document.addEventListener("deviceready", app.onDeviceReady, false);
 
 //var device = {platform:'browser'}; app.onDeviceReady();
-// document.addEventListener('DOMContentLoaded', function() {});
+document.addEventListener('DOMContentLoaded', function() {
+        screenStuff();
+        navigatorStuff();
+        jqueryStuff();
+});
+
