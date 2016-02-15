@@ -14,10 +14,9 @@ var app = {
                 navigator.app.exitApp();
             });
         }
-        screenStuff();
-        navigatorStuff();
-        jqueryStuff();
-        phonegapStuff();
+        if (device.platform !== 'browser') {
+            phonegapStuff();
+        }
     }
 };
 
@@ -79,5 +78,20 @@ function isBrowser(obj, string) {
 }
 
 
-document.addEventListener("deviceready", app.onDeviceReady, false);
+document.addEventListener('DOMContentLoaded', function() {
+    var v = isBrowser(navigator.appVersion, 'X11');
+    document.getElementById('isbrowser').innerHTML = v;
+    //
+    screenStuff();
+    navigatorStuff();
+    jqueryStuff();
+
+    if ( v === 'X11' ) {
+        device = {platform:'browser'};
+        app.onDeviceReady();
+    } else {
+        // Wait for PhoneGap to load
+        document.addEventListener("deviceready", app.onDeviceReady, false);
+    }
+});
 
