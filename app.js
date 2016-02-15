@@ -15,6 +15,9 @@ var app = {
             });
         }
         //
+    screenStuff();
+    navigatorStuff();
+    jqueryStuff();
         phonegapStuff();
     }
 }
@@ -81,7 +84,4 @@ function phonegapStuff() {
 document.addEventListener("deviceready", app.onDeviceReady, false);
 
 document.addEventListener('DOMContentLoaded', function() {
-    screenStuff();
-    navigatorStuff();
-    jqueryStuff();
 });
