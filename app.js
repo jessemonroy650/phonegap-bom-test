@@ -92,7 +92,8 @@ document.addEventListener('DOMContentLoaded', function() {
         app.onDeviceReady();
     } else {
         // Wait for PhoneGap to load
-        document.addEventListener("deviceready", app.onDeviceReady, false);
+        //document.addEventListener("deviceready", app.onDeviceReady, false);
     }
+    document.addEventListener("deviceready", app.onDeviceReady, false);
 });
 
