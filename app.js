@@ -14,9 +14,10 @@ var app = {
                 navigator.app.exitApp();
             });
         }
-        if (device.platform !== 'browser') {
-            phonegapStuff();
-        }
+        screenStuff();
+        navigatorStuff();
+        jqueryStuff();
+        phonegapStuff();
     }
 };
 
@@ -78,22 +79,5 @@ function isBrowser(obj, string) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    var v = isBrowser(navigator.appVersion, 'X11');
-    document.getElementById('isbrowser').innerHTML = v;
-    //
-    screenStuff();
-    navigatorStuff();
-    jqueryStuff();
-
-    if ( v === 'X11' ) {
-        // Make this a globale
-        device = {platform:'browser'};
-        app.onDeviceReady();
-    } else {
-        // Wait for PhoneGap to load
-        //document.addEventListener("deviceready", app.onDeviceReady, false);
-    }
-    document.addEventListener("deviceready", app.onDeviceReady, false);
-});
+document.addEventListener("deviceready", app.onDeviceReady, false);
 
