@@ -15,9 +15,9 @@ var app = {
             });
         }
         //
-    screenStuff();
-    navigatorStuff();
-    jqueryStuff();
+        screenStuff();
+        navigatorStuff();
+        jqueryStuff();
         phonegapStuff();
     }
 }
@@ -83,5 +83,5 @@ function phonegapStuff() {
 // Wait for PhoneGap to load
 document.addEventListener("deviceready", app.onDeviceReady, false);
 
-document.addEventListener('DOMContentLoaded', function() {
-});
+//var device = {platform:'browser'}; app.onDeviceReady();
+// document.addEventListener('DOMContentLoaded', function() {});
