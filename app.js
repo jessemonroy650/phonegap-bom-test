@@ -14,6 +14,9 @@ var app = {
                 navigator.app.exitApp();
             });
         }
+        screenStuff();
+        navigatorStuff();
+        jqueryStuff();
         if (device.platform !== 'browser') {
             phonegapStuff();
         }
@@ -82,10 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var v = isBrowser(navigator.appVersion, 'X11');
     document.getElementById('isbrowser').innerHTML = v;
     //
-    screenStuff();
-    navigatorStuff();
-    jqueryStuff();
-
     if ( v === 'X11' ) {
         device = {platform:'browser'};
         app.onDeviceReady();
