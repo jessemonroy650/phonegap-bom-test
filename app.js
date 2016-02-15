@@ -8,19 +8,15 @@ var app = {
             document.getElementById('exitApp').classList.add("hidden");
             /* deals with post-iOS-7 change that covers the status bar */
             document.body.style.marginTop = "20px";
-        } else if (device.platform == 'Android') {
+        } else if (device.platform === 'Android') {
             document.getElementById('uuid').style.fontSize = 'medium';
             document.getElementById('exitApp').addEventListener('click', function() {
                 navigator.app.exitApp();
             });
         }
-        //
-        screenStuff();
-        navigatorStuff();
-        var v = isBrowser(navigator.appVersion, 'X11');
-        document.getElementById('isbrowser').innerHTML = v;
-        jqueryStuff();
-        phonegapStuff();
+        if (device.platform !== 'browser') {
+            phonegapStuff();
+        }
     }
 };
 
@@ -81,15 +77,22 @@ function isBrowser(obj, string) {
     return obj.match(string);
 }
 
-// Wait for PhoneGap to load
-//document.addEventListener("deviceready", app.onDeviceReady, false);
 
-//var device = {platform:'browser'}; app.onDeviceReady();
 document.addEventListener('DOMContentLoaded', function() {
-    screenStuff();
-    navigatorStuff();
     var v = isBrowser(navigator.appVersion, 'X11');
     document.getElementById('isbrowser').innerHTML = v;
+    //
+    screenStuff();
+    navigatorStuff();
     jqueryStuff();
+
+    if ( v === 'X11' ) {
+        // Make this a globale
+        device = {platform:'browser'};
+        app.onDeviceReady();
+    } else {
+        // Wait for PhoneGap to load
+        document.addEventListener("deviceready", app.onDeviceReady, false);
+    }
 });
 
