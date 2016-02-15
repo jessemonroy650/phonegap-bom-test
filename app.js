@@ -4,6 +4,7 @@
 var app = {
     onDeviceReady : function() {
         // console.log('onDeviceReady');
+document.getElementById('isbrowser').innerHTML = 'onDeviceReady';
         if (device.platform === "iOS") {
             // hide Exit button. They don't have one on iOS devices.
             document.getElementById('exitApp').classList.add("hidden");
@@ -18,9 +19,11 @@ var app = {
         screenStuff();
         navigatorStuff();
         jqueryStuff();
+document.getElementById('isbrowser').innerHTML = 'mid onDeviceReady';
         if (device.platform !== 'browser') {
             phonegapStuff();
         }
+document.getElementById('isbrowser').innerHTML = 'onDeviceReady done.';
     }
 };
 
@@ -84,13 +87,14 @@ function isBrowser(obj, string) {
 
 document.addEventListener('DOMContentLoaded', function() {
     var v = isBrowser(navigator.appVersion, 'X11');
-    document.getElementById('isbrowser').innerHTML = v;
     //
     // This is truthy, not absolute.
     if ( v == 'X11' ) {
+       document.getElementById('isbrowser').innerHTML = v;
         device = {platform:'browser'};
         app.onDeviceReady();
     } else {
+        document.getElementById('isbrowser').innerHTML = 'not X11';
         //console.log('not X11');
         // Wait for PhoneGap to load
         document.addEventListener("deviceready", app.onDeviceReady, false);
