@@ -97,7 +97,8 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('isbrowser').innerHTML = 'not X11';
         //console.log('not X11');
         // Wait for PhoneGap to load
-        document.addEventListener("deviceready", app.onDeviceReady, false);
+        app.onDeviceReady();
+        //document.addEventListener("deviceready", app.onDeviceReady, false);
     }
 });
 
