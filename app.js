@@ -85,20 +85,7 @@ function isBrowser(obj, string) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    var v = isBrowser(navigator.appVersion, 'X11');
-    //
-    // This is truthy, not absolute.
-    if ( v == 'X11' ) {
-       document.getElementById('isbrowser').innerHTML = v;
-        device = {platform:'browser'};
-        app.onDeviceReady();
-    } else {
-        document.getElementById('isbrowser').innerHTML = 'not X11';
-        //console.log('not X11');
-        // Wait for PhoneGap to load
-        app.onDeviceReady();
-        //document.addEventListener("deviceready", app.onDeviceReady, false);
-    }
-});
+document.addEventListener("deviceready", app.onDeviceReady, false);
+
+// document.addEventListener('DOMContentLoaded', function() {});
 
