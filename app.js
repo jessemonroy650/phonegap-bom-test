@@ -84,8 +84,4 @@ function isBrowser(obj, string) {
     return obj.match(string);
 }
 
-
 document.addEventListener("deviceready", app.onDeviceReady, false);
-
-// document.addEventListener('DOMContentLoaded', function() {});
-
