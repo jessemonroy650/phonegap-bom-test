@@ -4,7 +4,7 @@
 var app = {
     onDeviceReady : function() {
         // console.log('onDeviceReady');
-document.getElementById('isbrowser').innerHTML = 'onDeviceReady';
+document.getElementById('isstate').innerHTML = 'onDeviceReady';
         if (device.platform === "iOS") {
             // hide Exit button. They don't have one on iOS devices.
             document.getElementById('exitApp').classList.add("hidden");
@@ -19,11 +19,11 @@ document.getElementById('isbrowser').innerHTML = 'onDeviceReady';
         screenStuff();
         navigatorStuff();
         jqueryStuff();
-document.getElementById('isbrowser').innerHTML = 'mid onDeviceReady';
+document.getElementById('isstate').innerHTML = 'mid onDeviceReady';
         if (device.platform !== 'browser') {
             phonegapStuff();
         }
-document.getElementById('isbrowser').innerHTML = 'onDeviceReady done.';
+document.getElementById('isstate').innerHTML = 'onDeviceReady done.';
     }
 };
 
