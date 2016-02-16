@@ -2,6 +2,8 @@
 //
 //
 var app = {
+    self : {},
+
     onDeviceReady : function() {
         // console.log('onDeviceReady');
 document.getElementById('isstate').innerHTML = 'onDeviceReady';
@@ -84,4 +86,5 @@ function isBrowser(obj, string) {
     return obj.match(string);
 }
 
+// Wait for PhoneGap to load
 document.addEventListener("deviceready", app.onDeviceReady, false);
